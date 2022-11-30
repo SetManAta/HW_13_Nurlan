@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>{{ trans.period }}</h3>
+<p>{{ trans.value }}</p>
+<p>{{ trans.status }}</p>
+<p>{{ trans.unit }}</p>
+<p>{{ trans.subject }}</p>
+
+<p>
+    <a class="btn btn-warning" href="{{ url_for('transaction_update', id=trans.id) }}">Изменить</a>
+</p>
+<p>
+    <a class="btn btn-danger" href="{{ url_for('transaction_delete', id=trans.id) }}">Удалить</a>
+</p>
+
+{% endblock content %}
