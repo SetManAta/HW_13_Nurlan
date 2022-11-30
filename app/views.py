@@ -57,11 +57,10 @@ def register_view():
             db.session.add(user)
             db.session.commit()
             flash(f'Ползователь {user.username} save!','success')
-            return redirect(url_for('login'))
+            return redirect(url_for('transactions_list'))
     return render_template('user_form.html', form=form)
 
 def login_view():
-    logout_user()
     form = UserForm()
     if request.method == "POST":
         if form.validate_on_submit():
@@ -78,4 +77,4 @@ def login_view():
 
 def logout_view():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('transactions_list'))
