@@ -8,6 +8,7 @@ def trans_view():
     trans = Transactions.query.all()
     return render_template('transactions_list.html', trans=trans)
 
+@login_required
 def transactions_create():
     form = TransactionsForm(request.form)
     if request.method == 'POST':
@@ -16,7 +17,7 @@ def transactions_create():
             form.populate_obj(trans)
             db.session.add(trans)
             db.session.commit()
-            flash('Студент сохранен')
+            flash('Транзакция сохранена')
             return redirect(url_for('transactions_list'))
     return render_template('transaction_form.html', form=form)
 
@@ -26,6 +27,7 @@ def transactions_detail(id):
     return render_template('transaction_detail.html', trans=trans)
 
 
+@login_required
 def transactions_update(id):
     trans = Transactions.query.get(id)
     form = TransactionsForm(request.form, obj=trans)
@@ -37,7 +39,7 @@ def transactions_update(id):
             return redirect(url_for('transactions_list'))
     return render_template('transaction_form.html', form=form)
 
-
+@login_required
 def transactions_delete(id):
     trans = Transactions.query.get(id)
     if request.method == 'POST':

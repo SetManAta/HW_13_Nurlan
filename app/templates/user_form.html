@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content%}
+<h1>Регистрация пользователя</h1>
+
+<form method="POST">
+    {% for field in form%}
+    <div class="form-group">
+     {% if field.widget.input_type != 'hidden' %}
+      {{field.label}}
+      {%endif%}
+      {{field(class='form-control')}}
+      {% if field.errors %}
+      {% for error in field.errors%}
+      <small class="form-text text-muted">{{ error }}</small>
+      {%endfor%}  
+      {%endif%}
+
+    </div>
+   {% endfor%}
+    <button type="submit" class="btn btn-primary">Зарегестрировать</button>
+  </form>
+
+{%endblock content%}

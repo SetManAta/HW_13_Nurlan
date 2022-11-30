@@ -8,6 +8,6 @@ app.add_url_rule('/transaction/<int:id>/update', view_func=views.transactions_up
 app.add_url_rule('/transaction/<int:id>/delete', view_func=views.transactions_delete, methods=['GET', 'POST'], endpoint='transaction_delete')
 
 
-# app.add_url_rule('/register', view_func=views.register_view,methods=['GET','POST'],endpoint='register')
-# app.add_url_rule('/login', view_func=views.login_view,methods=['GET','POST'],endpoint='login')
-# app.add_url_rule('/logout', view_func=views.logout_view,methods=['GET','POST'],endpoint='logout')
+app.add_url_rule('/register', view_func=views.register_view,methods=['GET','POST'],endpoint='register')
+app.add_url_rule('/login', view_func=views.login_view,methods=['GET','POST'],endpoint='login')
+app.add_url_rule('/logout', view_func=views.logout_view,methods=['GET','POST'],endpoint='logout')
